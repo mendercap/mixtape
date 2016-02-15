@@ -90,7 +90,7 @@ abbr,acronym {
 
 .cb-slideshow:after {
     content: '';
-    background: transparent url(/images/pattern.png) repeat top left;
+    background: transparent url(http://s29.postimg.org/b0iosv9kz/pattern.png) repeat top left;
 }
 
 .cb-slideshow li span {
