@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Zi’s Mix Tapes</title>
+        <meta name="description" content="You and me, we’re in this together now.">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="js/smoothscroll.js"></script>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="player.css">
+    </head>
+
+    <body>
+        
+        <!-- Scripts -->
+        <script>
+            var b = document.documentElement;
+            b.setAttribute('data-useragent', navigator.userAgent);
+            b.setAttribute('data-platform', navigator.platform);
+
+            jQuery(function ($) {
+                var supportsAudio = !!document.createElement('audio').canPlayType;
+                if (supportsAudio) {
+                    var index = 0,
+                        playing = false,
+                        mediaPath = '/songs/',
+                        extension = '',
+                        tracks = [{
+                            "track": 1,
+                            "name": "The Weight Of Gold - Forest Swords",
+                            "length": "05:02",
+                            "file": "ForestSwords-TheWeightOfGold"
+                        }, {
+                            "track": 2,
+                            "name": "No Sugar In My Coffee - Caught A Ghost",
+                            "length": "03:31",
+                            "file": "CaughtAGhost-NoSugarInMyCoffee"
+                        }, {
+                            "track": 3,
+                            "name": "Dixon’s Girl - Dessa",
+                            "length": "02:43",
+                            "file": "Dessa-DixonsGirl"
+                        }, {
+                            "track": 4,
+                            "name": "Silver Light - Coconuts",
+                            "length": "06:36",
+                            "file": "Coconuts-SilverLight"
+                        }, {
+                            "track": 5,
+                            "name": "Sway, Sway - Heinali",
+                            "length": "04:54",
+                            "file": "Heinali-SwaySway"
+                        }, {
+                            "track": 6,
+                            "name": "Every Night You’ve Got To Save Me - Mass Gothic",
+                            "length": "04:21",
+                            "file": "MassGothic-EveryNightYouveGotToSaveMe"
+                        }],
+                        trackCount = tracks.length,
+                        npAction = $('#npAction'),
+                        npTitle = $('#npTitle'),
+                        audio = $('#audio1').bind('play', function () {
+                            playing = true;
+                            npAction.text('Now Playing...');
+                        }).bind('pause', function () {
+                            playing = false;
+                            npAction.text('Paused...');
+                        }).bind('ended', function () {
+                            npAction.text('Paused...');
+                            if ((index + 1) < trackCount) {
+                                index++;
+                                loadTrack(index);
+                                audio.play();
+                            } else {
+                                audio.pause();
+                                index = 0;
+                                loadTrack(index);
+                            }
+                        }).get(0),
+                        btnPrev = $('#btnPrev').click(function () {
+                            if ((index - 1) > -1) {
+                                index--;
+                                loadTrack(index);
+                                if (playing) {
+                                    audio.play();
+                                }
+                            } else {
+                                audio.pause();
+                                index = 0;
+                                loadTrack(index);
+                            }
+                        }),
+                        btnNext = $('#btnNext').click(function () {
+                            if ((index + 1) < trackCount) {
+                                index++;
+                                loadTrack(index);
+                                if (playing) {
+                                    audio.play();
+                                }
+                            } else {
+                                audio.pause();
+                                index = 0;
+                                loadTrack(index);
+                            }
+                        }),
+                        li = $('#plList li').click(function () {
+                            var id = parseInt($(this).index());
+                            if (id !== index) {
+                                playTrack(id);
+                            }
+                        }),
+                        loadTrack = function (id) {
+                            $('.plSel').removeClass('plSel');
+                            $('#plList li:eq(' + id + ')').addClass('plSel');
+                            npTitle.text(tracks[id].name);
+                            index = id;
+                            audio.src = mediaPath + tracks[id].file + extension;
+                        },
+                        playTrack = function (id) {
+                            loadTrack(id);
+                            audio.play();
+                        };
+                    extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+                    loadTrack(index);
+                }
+            });
+        </script>
+        
+        <!-- End scripts -->
+        <div class="cover">
+            <ul class="cb-slideshow">
+                <li>
+                    <span>Image 01</span>
+                    <!--<div>
+                        <h3>drive</h3>
+                    </div>-->
+                </li>
+                <li>
+                    <span>Image 02</span>
+                </li>
+                <li>
+                    <span>Image 03</span>
+                </li>
+                <li>
+                    <span>Image 04</span>
+                </li>
+                <li>
+                    <span>Image 05</span>
+                </li>
+                <li>
+                    <span>Image 06</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="arrowContainer">
+            <a href="#playerNav" class="smoothScroll"><div class="arrow"></div></a>
+
+            <div class="container">
+                <div class="column center">
+                    <a name="playerNav"></a><h1>Zi’s Mix Tape</h1>
+                </div>
+                <div class="column add-bottom">
+                    <div id="mainwrap">
+                        <div id="nowPlay">
+                            <span class="left" id="npAction">Paused...</span>
+                            <span class="right" id="npTitle"></span>
+                        </div>
+                        <div id="audiowrap">
+                            <div id="audio0">
+                                <audio preload id="audio1" controls="controls">Your browser does not support HTML5 Audio!</audio>
+                            </div>
+                            <div id="tracks">
+                                <a id="btnPrev">&laquo;</a>
+                                <a id="btnNext">&raquo;</a>
+                            </div>
+                        </div>
+                        <div id="plwrap">
+                            <ul id="plList">
+                                <li>
+                                    <div class="plItem">
+                                        <div class="plNum">1.</div>
+                                        <div class="plTitle">A Weight Of Gold - Forest Swords</div>
+                                        <div class="plLength">5:02</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="plItem">
+                                        <div class="plNum">2.</div>
+                                        <div class="plTitle">No Sugar In My Coffee - Caught A Ghost</div>
+                                        <div class="plLength">3:31</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="plItem">
+                                        <div class="plNum">3.</div>
+                                        <div class="plTitle">Dixon’s Girl - Dessa</div>
+                                        <div class="plLength">2:43</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="plItem">
+                                        <div class="plNum">4.</div>
+                                        <div class="plTitle">Silver Light - Coconuts</div>
+                                        <div class="plLength">6:36</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="plItem">
+                                        <div class="plNum">5.</div>
+                                        <div class="plTitle">Sway, Sway - Heinali</div>
+                                        <div class="plLength">4:54</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="plItem">
+                                        <div class="plNum">6.</div>
+                                        <div class="plTitle">Every Night You’ve Got To Save Me - Mass Gothic</div>
+                                        <div class="plLength">4:21</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </body>
+</html>

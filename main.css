@@ -1,0 +1,205 @@
+/* CSS reset */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+    margin:0;
+    padding:0;
+}
+
+html,body {
+    margin:0;
+    padding:0;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+fieldset,img { 
+    border:0;
+}
+
+input{
+    border:1px solid #b0b0b0;
+    padding:3px 5px 4px;
+    color:#979797;
+    width:190px;
+}
+
+address,caption,cite,code,dfn,th,var {
+    font-style:normal;
+    font-weight:normal;
+}
+
+ol,ul {
+    list-style:none;
+}
+
+caption,th {
+    text-align:left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:normal;
+}
+
+q:before,q:after {
+    content:'';
+}
+
+abbr,acronym { 
+    border:0; 
+}
+
+/* Arrow container */
+.arrowContainer {
+    position: absolute; top: 40%; left: 0;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+}
+
+/* Arrow */
+.arrow {
+    margin: 0 auto;
+    margin-bottom: 45%;
+    width:60px;
+    height:60px;
+    border-top:6px solid #FFFACD;
+    border-right:6px solid #FFFACD;
+
+    -moz-transform:rotate(135deg);
+    -webkit-transform:rotate(135deg);
+    -o-transform:rotate(135deg);
+    -ms-transform:rotate(135deg);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=-0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=-0.7071067811865476)";
+}
+
+/* Slideshow styles */
+
+.cb-slideshow,
+.cb-slideshow:after {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+
+.cb-slideshow:after {
+    content: '';
+    background: transparent url(/images/pattern.png) repeat top left;
+}
+
+.cb-slideshow li span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 36s linear infinite 0s;
+}
+
+.cb-slideshow li div {
+    z-index: 1000;
+    position: absolute;
+    bottom: 30px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    color: #fff;
+    animation: titleAnimation 36s linear infinite 0s;
+}
+
+.cb-slideshow li div {
+    font-family: sans-serif;
+    font-size: 240px;
+    padding: 0;
+    line-height: 200px;
+}
+
+.cb-slideshow li:nth-child(1) span {
+    background-image: url(/images/01.jpg)
+}
+
+.cb-slideshow li:nth-child(2) span {
+    background-image: url(/images/02.jpg);
+    animation-delay: 6s;
+}
+
+.cb-slideshow li:nth-child(3) span {
+    background-image: url(/images/03.jpg);
+    animation-delay: 12s;
+}
+
+.cb-slideshow li:nth-child(4) span {
+    background-image: url(/images/04.jpg);
+    animation-delay: 18s;
+}
+
+.cb-slideshow li:nth-child(5) span {
+    background-image: url(/images/05.jpg);
+    animation-delay: 24s;
+}
+
+.cb-slideshow li:nth-child(6) span {
+    background-image: url(/images/06.jpg);
+    animation-delay: 30s;
+}
+
+.cb-slideshow li:nth-child(2) div {
+    animation-delay: 6s;
+}
+
+.cb-slideshow li:nth-child(3) div {
+    animation-delay: 12s;
+}
+
+.cb-slideshow li:nth-child(4) div {
+    animation-delay: 18s;
+}
+
+.cb-slideshow li:nth-child(5) div {
+    animation-delay: 24s;
+}
+
+.cb-slideshow li:nth-child(6) div {
+    animation-delay: 30s;
+}
+
+@keyframes imageAnimation {
+    0% { opacity: 0; animation-timing-function: ease-in; }
+    8% { opacity: 1; animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}
+
+@keyframes titleAnimation {
+    0% { opacity: 0 }
+    8% { opacity: 1 }
+    17% { opacity: 1 }
+    19% { opacity: 0 }
+    100% { opacity: 0 }
+}
+
+.no-cssanimations .cb-slideshow li span {
+    opacity: 1;
+}
+
+.cover {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    top: 500px;
+}
