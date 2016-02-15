@@ -128,31 +128,31 @@ abbr,acronym {
 }
 
 .cb-slideshow li:nth-child(1) span {
-    background-image: url(/images/01.jpg)
+    background-image: url(https://c2.staticflickr.com/2/1620/24415717843_0686aea7fb_o_d.jpg)
 }
 
 .cb-slideshow li:nth-child(2) span {
-    background-image: url(/images/02.jpg);
+    background-image: url(https://c2.staticflickr.com/2/1632/24949277991_990f6d25f2_o_d.jpg);
     animation-delay: 6s;
 }
 
 .cb-slideshow li:nth-child(3) span {
-    background-image: url(/images/03.jpg);
+    background-image: url(https://c2.staticflickr.com/2/1549/24411940034_e7461638c8_o_d.jpg);
     animation-delay: 12s;
 }
 
 .cb-slideshow li:nth-child(4) span {
-    background-image: url(/images/04.jpg);
+    background-image: url(https://c2.staticflickr.com/2/1704/24747007410_dc18c7ed54_o_d.jpg);
     animation-delay: 18s;
 }
 
 .cb-slideshow li:nth-child(5) span {
-    background-image: url(/images/05.jpg);
+    background-image: url(https://c2.staticflickr.com/2/1474/24747005600_b6c91637df_o_d.jpg);
     animation-delay: 24s;
 }
 
 .cb-slideshow li:nth-child(6) span {
-    background-image: url(/images/06.jpg);
+    background-image: url(https://c2.staticflickr.com/2/1441/24674927689_1c503a4b98_o_d.jpg);
     animation-delay: 30s;
 }
 
